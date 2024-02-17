@@ -1,0 +1,3 @@
+[console_scripts]
+soapswga = src.pipeline:main
+
