@@ -6,7 +6,6 @@ Home-page: https://github.com/janeaisley/soapswga
 Author: Jane Yu
 Author-email: janeyu@berkeley.edu
 License: LICENSE.txt
-Platform: UNKNOWN
 Classifier: Programming Language :: Python
 Classifier: Development Status :: 4 - Beta
 Classifier: Environment :: Console
@@ -14,7 +13,7 @@ Classifier: Intended Audience :: Science/Research
 Classifier: License :: OSI Approved :: GNU General Public License (GPL)
 License-File: LICENSE
 
-# swga2.0: SOAPswga (**S**elective **O**ptimal **A**mplifying **P**rimers for **s**elective **w**hole-**g**enome **a**mplification)
+# swga2.1: SOAPswga (**S**elective **O**ptimal **A**mplifying **P**rimers for **s**elective **w**hole-**g**enome **a**mplification)
 
 The method is described in the following paper: [https://doi.org/10.1371/journal.pcbi.1010137](https://doi.org/10.1371/journal.pcbi.1010137)
 
@@ -41,7 +40,9 @@ The method is described in the following paper: [https://doi.org/10.1371/journal
 
 ## Introduction 
 
-SOAPswga (aka swga2.0) is a command-line tool for choosing   sets of primers for selective whole-genome amplification. The overall pipeline for proposing primer sets takes in a set of genomes which we would like to amplify (target genome(s)) and would not like to amplify (off-target genome(s)), where the goal is to find sets of primers which will effectively and evenly amplify the target genome(s) and not the off-target genome(s). An easy-install conda version of swga2.0 can be found at https://anaconda.org/janedwivedi/swga2.
+SOAPswga (aka swga2.1) is a command-line tool for choosing   sets of primers for selective whole-genome amplification. The overall pipeline for proposing primer sets takes in a set of genomes which we would like to amplify (target genome(s)) and would not like to amplify (off-target genome(s)), where the goal is to find sets of primers which will effectively and evenly amplify the target genome(s) and not the off-target genome(s). An easy-install conda version of swga2.0 can be found at https://anaconda.org/janedwivedi/swga2, however, this version uses Python 3.8.
+
+The version located in this repository runs best with Python 3.10, and therefore will run natively on Apple M1 computers.
 
 ## Installation
 
@@ -71,6 +72,7 @@ Install dependencies in the virtual environment using
 $ pip install -r requirements.txt
 ```
 
+Execute the setup.py file using
  ```bash
 $ pip install .
 ```
@@ -87,7 +89,9 @@ The primary step in the program identifies the k-mers of length 6 to 12 in the t
 
 The k-mer files for the target and off-target gnomes will be output to a file with a path prefix determined by command line parameters `-k` or `--kmer-fore` and `-j` or `--kmer-back`, respectively. 
 
-For example, if you have a ready json file (see ./examples/plasmid_example/params.json) you can run 
+Before the script is run, ensure that the filepath in the params.json are correct for `fg_genomes`, `bg_genomes`, `fg_prefixes`, and `bg_prefixes`.
+
+For example, when you have a ready json file (see ./examples/plasmid_example/params.json) you can run 
 
 ```bash
 $ soapswga step1 -j ./examples/plasmid_example/params.json
@@ -237,5 +241,3 @@ $ soapswga step4 --max-sets 5 --drop_iterations [4]
 | -w | --max_sets | 5 | maximum number of sets to build in parallel |
 | -s | --selection_method | 'deterministic' | selection method for choosing the next top primer sets {deterministic, softmax, normalize} |
 | -# | --top_sets_count | 10 | the number of top sets to output |
-
-
