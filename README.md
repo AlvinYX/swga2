@@ -62,7 +62,7 @@ Execute the setup.py file using
 $ pip install .
 ```
 
-You'll also need `jellyfish`, which is available at https://www.cbcb.umd.edu/software/jellyfish/ and will needed to be added to your PATH.
+You'll also need `jellyfish`, which is available at https://www.cbcb.umd.edu/software/jellyfish/ and will need to be added to your PATH.
 
 ## Workflow
 
